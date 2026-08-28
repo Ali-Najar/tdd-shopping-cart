@@ -6,6 +6,12 @@ public class ShoppingCart {
     private Map<String, Double> items = new HashMap<>();
 
     public void addItem(String name, double price) {
+        if (items.containsKey(name)) {
+            throw new IllegalArgumentException(
+                    "Item already exists: " + name
+            );
+        }
+
         items.put(name, price);
     }
 
