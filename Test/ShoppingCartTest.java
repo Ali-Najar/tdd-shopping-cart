@@ -22,6 +22,17 @@ public class ShoppingCartTest {
         assertEquals(0.0, cart.getTotal());
     }
 
+    @Test
+    void removingMissingItemShouldReturnFalse() {
+        ShoppingCart cart = new ShoppingCart();
+
+        boolean removed = cart.removeItem("Missing");
+
+        assertFalse(removed);
+        assertEquals(0, cart.getItemCount());
+        assertEquals(0.0, cart.getTotal());
+    }
+
 
     @Test
     public void testDiscountAtBoundary_WRONG() {
@@ -42,6 +53,16 @@ public class ShoppingCartTest {
         double discounted = cart.getTotalWithDiscount();
 
         assertEquals(108.0, discounted);
+    }
+
+    @Test
+    void totalBelow100ShouldNotBeDiscounted() {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem("Book", 99.99);
+
+        double total = cart.getTotalWithDiscount();
+
+        assertEquals(99.99, total, 0.0001);
     }
 
    @Test

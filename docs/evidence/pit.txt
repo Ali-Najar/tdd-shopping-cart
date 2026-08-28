@@ -1,0 +1,8 @@
+Generated mutants: 24
+Killed mutants:    22
+Survived mutants:   0
+No Coverage:        2
+
+Mutation Score: 22 / 24 = 91.67% ≈ 92%
+Test Strength:  22 / 22 = 100%
+Line Coverage:  33 / 35 = 94%

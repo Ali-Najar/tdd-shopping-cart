@@ -1,0 +1,22 @@
+PIT Mutation Testing - After Adding Missing Branch Tests
+
+Generated Mutants: 24
+Killed Mutants:    24
+Survived Mutants:  0
+No Coverage:       0
+
+Mutation Score Calculation:
+Killed Mutants / Generated Mutants * 100
+24 / 24 * 100 = 100%
+
+Test Strength Calculation:
+Killed Mutants / (Killed Mutants + Survived Mutants) * 100
+24 / (24 + 0) * 100 = 100%
+
+Line Coverage for Mutated Classes:
+35 / 35 * 100 = 100%
+
+Final Results:
+Mutation Score: 100%
+Test Strength:  100%
+Line Coverage:  100%
