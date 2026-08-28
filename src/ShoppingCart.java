@@ -54,7 +54,7 @@ public class ShoppingCart {
     }
     public double getTotalWithDiscount() {
         double total = getTotal();
-        if (total >= 100) {
+        if (total > 100) {
             return total * 0.9;
         }
         return total;
