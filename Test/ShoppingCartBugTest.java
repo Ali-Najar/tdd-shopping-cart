@@ -21,47 +21,62 @@ public class ShoppingCartBugTest {
         assertEquals(1, cart.getItemCount());
         assertEquals(50.0, cart.getTotal(), 0.0001);
     }
-}
 
-@ParameterizedTest
-@NullAndEmptySource
-@ValueSource(strings = {" ", "   ", "\t"})
-void invalidItemNamesShouldBeRejected(String name) {
-    ShoppingCart cart = new ShoppingCart();
+    
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {" ", "   ", "\t"})
+    void invalidItemNamesShouldBeRejected(String name) {
+        ShoppingCart cart = new ShoppingCart();
 
-    assertThrows(
-            IllegalArgumentException.class,
-            () -> cart.addItem(name, 10.0)
-    );
-}
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> cart.addItem(name, 10.0)
+        );
+    }
 
-@ParameterizedTest
-@ValueSource(doubles = {
-        0.0,
-        -0.01,
-        -1.0,
-        -100.0
-})
-void nonPositivePricesShouldBeRejected(double price) {
-    ShoppingCart cart = new ShoppingCart();
+    @ParameterizedTest
+    @ValueSource(doubles = {
+            0.0,
+            -0.01,
+            -1.0,
+            -100.0
+    })
+    void nonPositivePricesShouldBeRejected(double price) {
+        ShoppingCart cart = new ShoppingCart();
 
-    assertThrows(
-            IllegalArgumentException.class,
-            () -> cart.addItem("Book", price)
-    );
-}
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> cart.addItem("Book", price)
+        );
+    }
 
-@Test
-void nonFinitePricesShouldBeRejected() {
-    ShoppingCart cart = new ShoppingCart();
+    @Test
+    void nonFinitePricesShouldBeRejected() {
+        ShoppingCart cart = new ShoppingCart();
 
-    assertThrows(
-            IllegalArgumentException.class,
-            () -> cart.addItem("A", Double.NaN)
-    );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> cart.addItem("A", Double.NaN)
+        );
 
-    assertThrows(
-            IllegalArgumentException.class,
-            () -> cart.addItem("B", Double.POSITIVE_INFINITY)
-    );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> cart.addItem("B", Double.POSITIVE_INFINITY)
+        );
+    }
+
+    @Test
+    void exactly100ShouldNotReceiveDiscount() {
+        ShoppingCart cart = new ShoppingCart();
+
+        cart.addItem("ItemA", 40.0);
+        cart.addItem("ItemB", 60.0);
+
+        assertEquals(
+                100.0,
+                cart.getTotalWithDiscount(),
+                0.0001
+        );
+    }
 }
