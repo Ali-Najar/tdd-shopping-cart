@@ -31,7 +31,7 @@ public class ShoppingCartTest {
 
         double discounted = cart.getTotalWithDiscount();
 
-        assertEquals(100.0, discounted);
+        assertEquals(90.0, discounted);
     }
 
     @Test

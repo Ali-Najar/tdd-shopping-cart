@@ -74,7 +74,7 @@ public class ShoppingCartBugTest {
         cart.addItem("ItemB", 60.0);
 
         assertEquals(
-                100.0,
+                90.0,
                 cart.getTotalWithDiscount(),
                 0.0001
         );

@@ -54,7 +54,7 @@ public class ShoppingCart {
     }
     public double getTotalWithDiscount() {
         double total = getTotal();
-        if (total > 100) {
+        if (total >= 100) {
             return total * 0.9;
         }
         return total;
@@ -64,6 +64,15 @@ public class ShoppingCart {
         return items.size();
     }
 
-    public void updateItemPrice(String name, int newPrice) {}
+    public void updateItemPrice(String name, double newPrice) {
+        validateName(name);
+        validatePrice(newPrice);
+
+        if (!items.containsKey(name)) {
+            return;
+        }
+
+        items.put(name, newPrice);
+    }
 
 }
