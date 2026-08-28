@@ -1,0 +1,5 @@
+Final ShoppingCart Coverage
+
+Line Coverage:   94.3%
+Branch Coverage: 90%
+Method Coverage: 100%
