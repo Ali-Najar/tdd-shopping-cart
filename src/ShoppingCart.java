@@ -1,11 +1,33 @@
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class ShoppingCart {
 
     private Map<String, Double> items = new HashMap<>();
 
+
+    private void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Item name must not be blank"
+            );
+        }
+    }
+
+    private void validatePrice(double price) {
+        if (!Double.isFinite(price) || price <= 0.0) {
+            throw new IllegalArgumentException(
+                    "Price must be a positive finite value"
+            );
+        }
+    }
+
+
     public void addItem(String name, double price) {
+        validateName(name);
+        validatePrice(price);
+
         if (items.containsKey(name)) {
             throw new IllegalArgumentException(
                     "Item already exists: " + name
