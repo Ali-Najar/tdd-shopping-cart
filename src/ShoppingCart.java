@@ -68,11 +68,9 @@ public class ShoppingCart {
         validateName(name);
         validatePrice(newPrice);
 
-        if (!items.containsKey(name)) {
-            return;
+        if (items.containsKey(name)) {
+            items.put(name, newPrice);
         }
-
-        items.put(name, newPrice);
     }
 
 }
