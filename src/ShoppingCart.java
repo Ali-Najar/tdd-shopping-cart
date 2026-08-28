@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class ShoppingCart {
 
+    private static final int MAX_ITEMS = 100;
     private Map<String, Double> items = new HashMap<>();
 
 
@@ -31,6 +32,12 @@ public class ShoppingCart {
         if (items.containsKey(name)) {
             throw new IllegalArgumentException(
                     "Item already exists: " + name
+            );
+        }
+
+        if (items.size() >= MAX_ITEMS) {
+            throw new IllegalStateException(
+                    "Cart capacity exceeded"
             );
         }
 
