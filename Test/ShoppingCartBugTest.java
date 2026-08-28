@@ -79,4 +79,15 @@ public class ShoppingCartBugTest {
                 0.0001
         );
     }
+
+    @Test
+    void shouldUpdateToDecimalPrice() {
+        ShoppingCart cart = new ShoppingCart();
+
+        cart.addItem("Book", 10.0);
+
+        cart.updateItemPrice("Book", 19.99);
+
+        assertEquals(19.99, cart.getTotal(), 0.0001);
+    }
 }
